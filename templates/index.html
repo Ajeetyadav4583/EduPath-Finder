@@ -1,22 +1,216 @@
+<!-- templates/index.html -->
+
 {% extends "base.html" %}
 
 {% block content %}
-<section class="hero">
-    <h1>Find Legal Courses, Books & Tools in One Place</h1>
-    <p>AI-powered learning roadmap platform for students.</p>
-    <a class="btn" href="/courses">Explore Courses</a>
+
+<!-- TOP SEARCH BAR -->
+<section class="top-search-section">
+
+    <div class="top-search-container">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            type="text"
+            placeholder="Search courses, books, AI tools..."
+        >
+
+    </div>
+
 </section>
 
-<h2>Trending Courses</h2>
+
+<!-- CATEGORY TAGS -->
+<section class="categories-section">
+
+    <div class="categories">
+
+        <span>Python</span>
+        <span>AI/ML</span>
+        <span>Web Dev</span>
+        <span>UPSC</span>
+        <span>JEE</span>
+        <span>Data Science</span>
+        <span>DSA</span>
+
+    </div>
+
+</section>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            AI Powered Learning Platform
+        </span>
+
+        <h1>
+            Build your learning path with the best learning resources.
+        </h1>
+
+        <p>
+            Discover courses, books, tools, roadmaps and notes in one place.
+            Track your progress and learn in a structured way.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a class="btn primary" href="/courses">
+                <i class="fa-solid fa-graduation-cap"></i>
+                Explore Courses
+            </a>
+
+            <a class="btn secondary" href="/roadmap">
+                <i class="fa-solid fa-route"></i>
+                Generate Roadmap
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-panel">
+
+        <h3>
+            <i class="fa-solid fa-chart-line"></i>
+            Learning Dashboard
+        </h3>
+
+        <div class="stat-card">
+            <span>
+                <i class="fa-solid fa-star"></i>
+                Top Rated
+            </span>
+
+            <strong>4.8</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>
+                <i class="fa-solid fa-users"></i>
+                Completed
+            </span>
+
+            <strong>4,530+</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>
+                <i class="fa-solid fa-road"></i>
+                AI Roadmaps
+            </span>
+
+            <strong>120+</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+<section class="stats">
+
+    <div>
+        <i class="fa-solid fa-link"></i>
+        <h2>50+</h2>
+        <p>Trusted Resources</p>
+    </div>
+
+    <div>
+        <i class="fa-solid fa-briefcase"></i>
+        <h2>10+</h2>
+        <p>Career Paths</p>
+    </div>
+
+    <div>
+        <i class="fa-solid fa-shield-halved"></i>
+        <h2>100%</h2>
+        <p>Verified Links</p>
+    </div>
+
+</section>
+
+
+<!-- COURSES -->
+<h2 class="section-title">
+
+    <i class="fa-solid fa-fire"></i>
+
+    Trending Courses
+
+</h2>
 
 <div class="grid">
+
     {% for course in courses %}
-    <div class="card">
+
+    <div class="card course-card">
+
+        <div class="card-top">
+
+            <span class="tag">
+                {{ course.category }}
+            </span>
+
+            <i class="fa-regular fa-bookmark bookmark"></i>
+
+        </div>
+
         <h3>{{ course.title }}</h3>
-        <p>{{ course.category }} • {{ course.level }}</p>
-        <p>⭐ {{ course.rating }} | Completed: {{ course.completed }}</p>
-        <a href="{{ course.url }}" target="_blank">Open Legal Link</a>
+
+        <p>
+            <i class="fa-solid fa-building-columns"></i>
+            {{ course.provider }}
+        </p>
+
+        <p>
+            <i class="fa-solid fa-layer-group"></i>
+            {{ course.level }}
+        </p>
+
+        <p>
+            <i class="fa-solid fa-star"></i>
+            {{ course.rating }}
+
+            |
+
+            <i class="fa-solid fa-user-check"></i>
+            {{ course.completed }} completed
+        </p>
+
+        <div class="progress">
+
+            <div class="progress-bar"></div>
+
+        </div>
+
+        <div class="course-actions">
+
+            <button>
+                <i class="fa-solid fa-circle-check"></i>
+                Complete
+            </button>
+
+            <a href="{{ course.url }}" target="_blank">
+
+                Open
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+        </div>
+
     </div>
+
     {% endfor %}
+
 </div>
+
 {% endblock %}

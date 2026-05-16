@@ -1,25 +1,100 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Course Directory</h1>
 
-<form method="GET" class="search-box">
-    <input type="text" name="q" placeholder="Search course/category...">
-    <button type="submit">Search</button>
+<section class="page-header">
+
+    <span class="badge">
+        <i class="fa-solid fa-book-open"></i>
+        Course Directory
+    </span>
+
+    <h1>Explore legal courses for every learning goal.</h1>
+
+    <p>
+        Search Python, AI/ML, JEE, UPSC, Web Development and more structured resources.
+    </p>
+
+</section>
+
+<form method="GET" class="search-box premium-search">
+
+    <i class="fa-solid fa-magnifying-glass"></i>
+
+    <input type="text"
+           name="q"
+           placeholder="Search course/category...">
+
+    <button type="submit">
+        Search
+    </button>
+
 </form>
 
 <div class="grid">
+
     {% for course in courses %}
-    <div class="card">
+
+    <div class="card course-card">
+
+        <div class="card-top">
+
+            <span class="tag">
+                {{ course.category }}
+            </span>
+
+            <i class="fa-regular fa-bookmark bookmark"></i>
+
+        </div>
+
         <h3>{{ course.title }}</h3>
-        <p><b>Category:</b> {{ course.category }}</p>
-        <p><b>Provider:</b> {{ course.provider }}</p>
-        <p><b>Level:</b> {{ course.level }}</p>
-        <p><b>Language:</b> {{ course.language }}</p>
-        <p>⭐ {{ course.rating }} | {{ course.completed }} students completed</p>
-        <button onclick="alert('Marked as completed!')">Mark Completed</button>
-        <a href="{{ course.url }}" target="_blank">Open Course</a>
+
+        <p>
+            <i class="fa-solid fa-building-columns"></i>
+            {{ course.provider }}
+        </p>
+
+        <p>
+            <i class="fa-solid fa-layer-group"></i>
+            {{ course.level }} • {{ course.language }}
+        </p>
+
+        <p>
+            <i class="fa-solid fa-star"></i>
+            {{ course.rating }}
+
+            |
+
+            <i class="fa-solid fa-user-check"></i>
+            {{ course.completed }} completed
+        </p>
+
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+
+        <div class="course-actions">
+
+            <button onclick="alert('Marked as completed!')">
+
+                <i class="fa-solid fa-circle-check"></i>
+                Complete
+
+            </button>
+
+            <a href="{{ course.url }}" target="_blank">
+
+                Open
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+        </div>
+
     </div>
+
     {% endfor %}
+
 </div>
+
 {% endblock %}
