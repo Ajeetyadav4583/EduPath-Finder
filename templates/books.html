@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Book Directory</h1>
+
+<div class="grid">
+    {% for book in books %}
+    <div class="card">
+        <h3>{{ book.title }}</h3>
+        <p><b>Author:</b> {{ book.author }}</p>
+        <p><b>Category:</b> {{ book.category }}</p>
+        <p>⭐ {{ book.rating }}</p>
+        <a href="{{ book.url }}" target="_blank">Open Legal Link</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

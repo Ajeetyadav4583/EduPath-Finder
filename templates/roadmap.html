@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>AI Roadmap Generator</h1>
+
+<form method="POST" class="form-box">
+    <label>Your Goal</label>
+    <select name="goal">
+        <option>Learn Python</option>
+        <option>Become AI Engineer</option>
+        <option>Crack JEE</option>
+        <option>Prepare UPSC</option>
+        <option>Become Web Developer</option>
+    </select>
+
+    <label>Daily Study Hours</label>
+    <input type="number" name="hours" placeholder="Example: 2" required>
+
+    <button type="submit">Generate Roadmap</button>
+</form>
+
+{% if roadmap %}
+<div class="card">
+    <h2>Your Roadmap</h2>
+    <ol>
+        {% for step in roadmap %}
+        <li>{{ step }}</li>
+        {% endfor %}
+    </ol>
+</div>
+{% endif %}
+{% endblock %}

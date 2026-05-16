@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Course Directory</h1>
+
+<form method="GET" class="search-box">
+    <input type="text" name="q" placeholder="Search course/category...">
+    <button type="submit">Search</button>
+</form>
+
+<div class="grid">
+    {% for course in courses %}
+    <div class="card">
+        <h3>{{ course.title }}</h3>
+        <p><b>Category:</b> {{ course.category }}</p>
+        <p><b>Provider:</b> {{ course.provider }}</p>
+        <p><b>Level:</b> {{ course.level }}</p>
+        <p><b>Language:</b> {{ course.language }}</p>
+        <p>⭐ {{ course.rating }} | {{ course.completed }} students completed</p>
+        <button onclick="alert('Marked as completed!')">Mark Completed</button>
+        <a href="{{ course.url }}" target="_blank">Open Course</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

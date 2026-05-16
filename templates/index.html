@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <h1>Find Legal Courses, Books & Tools in One Place</h1>
+    <p>AI-powered learning roadmap platform for students.</p>
+    <a class="btn" href="/courses">Explore Courses</a>
+</section>
+
+<h2>Trending Courses</h2>
+
+<div class="grid">
+    {% for course in courses %}
+    <div class="card">
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.category }} • {{ course.level }}</p>
+        <p>⭐ {{ course.rating }} | Completed: {{ course.completed }}</p>
+        <a href="{{ course.url }}" target="_blank">Open Legal Link</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

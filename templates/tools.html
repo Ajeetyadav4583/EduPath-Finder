@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Tools Directory</h1>
+
+<div class="grid">
+    {% for tool in tools %}
+    <div class="card">
+        <h3>{{ tool.name }}</h3>
+
+        <p>
+            <b>Category:</b>
+            {{ tool.category }}
+        </p>
+
+        <p>
+            {{ tool.description }}
+        </p>
+
+        <p>
+            ⭐ {{ tool.rating }}
+        </p>
+
+        <a href="{{ tool.url }}" target="_blank">
+            Open Tool
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
