@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -15,7 +14,6 @@
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 </head>
 
 <body>
@@ -59,6 +57,11 @@
                 Notes
             </a>
 
+            <a href="/contact">
+                <i class="fa-solid fa-envelope"></i>
+                Contact
+            </a>
+
             {% if session.username %}
 
                 <span style="
@@ -93,10 +96,8 @@
     </nav>
 
     <main>
-
         {% block content %}
         {% endblock %}
-
     </main>
 
 </body>

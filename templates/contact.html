@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Contact Us</h1>
+
+<form method="POST" class="form-box">
+
+    <input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        required
+    >
+
+    <input
+        type="email"
+        name="email"
+        placeholder="Your Email"
+        required
+    >
+
+    <textarea
+        name="message"
+        rows="6"
+        placeholder="Write your message..."
+        required
+    ></textarea>
+
+    <button type="submit">
+        Send Message
+    </button>
+
+</form>
+
+{% if success %}
+
+<div class="card" style="margin-top:25px;">
+
+    <h2>
+        ✅ Thank you for your feedback!
+    </h2>
+
+    <p>
+        We received your message successfully.
+    </p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
