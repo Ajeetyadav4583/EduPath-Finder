@@ -46,3 +46,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+const forms =
+document.querySelectorAll("form");
+
+forms.forEach(form => {
+
+    form.addEventListener("submit", () => {
+
+        const button =
+        form.querySelector("button");
+
+        if(button){
+
+            button.innerHTML =
+            "Loading...";
+
+            button.disabled = true;
+        }
+
+    });
+
+});
