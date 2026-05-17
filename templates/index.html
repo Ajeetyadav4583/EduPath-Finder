@@ -12,6 +12,7 @@
         <i class="fa-solid fa-magnifying-glass"></i>
 
         <input
+            id="homeSearch"
             type="text"
             placeholder="Search courses, books, AI tools..."
         >
@@ -150,7 +151,10 @@
 
     {% for course in courses %}
 
-    <div class="card course-card">
+    <div
+        class="card course-card"
+        data-search="{{ course.title }} {{ course.category }} {{ course.provider }} {{ course.level }}"
+    >
 
         <div class="card-top">
 
@@ -212,5 +216,37 @@
     {% endfor %}
 
 </div>
+
+
+<!-- SEARCH SCRIPT -->
+<script>
+
+const searchInput = document.getElementById("homeSearch");
+
+const courseCards = document.querySelectorAll(".course-card");
+
+searchInput.addEventListener("input", function () {
+
+    const value = this.value.toLowerCase();
+
+    courseCards.forEach(card => {
+
+        const text = card.dataset.search.toLowerCase();
+
+        if (text.includes(value)) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+});
+
+</script>
 
 {% endblock %}
