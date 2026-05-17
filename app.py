@@ -5,8 +5,8 @@ import os
 app = Flask(__name__)
 app.secret_key = "edupath_secret_key"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
@@ -149,7 +149,7 @@ tools = [
 
 notes = []
 
-# ========================= MODELS =========================
+# ========================= MODEL =========================
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -167,7 +167,6 @@ def home():
 @app.route("/courses")
 def course_page():
     query = request.args.get("q", "").lower()
-
     filtered = courses
 
     if query:
@@ -237,16 +236,9 @@ def signup():
         existing = User.query.filter_by(email=email).first()
 
         if existing:
-            return render_template(
-                "signup.html",
-                error="Email already registered."
-            )
+            return render_template("signup.html", error="Email already registered.")
 
-        new_user = User(
-            username=username,
-            email=email,
-            password=password
-        )
+        new_user = User(username=username, email=email, password=password)
 
         db.session.add(new_user)
         db.session.commit()
@@ -265,16 +257,10 @@ def login():
         user = User.query.filter_by(email=email).first()
 
         if not user:
-            return render_template(
-                "login.html",
-                error="Please signup first."
-            )
+            return render_template("login.html", error="Please signup first.")
 
         if user.password != password:
-            return render_template(
-                "login.html",
-                error="Invalid email or password."
-            )
+            return render_template("login.html", error="Invalid email or password.")
 
         session["username"] = user.username
 
@@ -288,12 +274,12 @@ def logout():
     session.pop("username", None)
     return redirect(url_for("home"))
 
-
 # ========================= INIT =========================
 
 with app.app_context():
     db.create_all()
 
+# ========================= RUN =========================
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

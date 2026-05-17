@@ -1,0 +1,10 @@
+[33m65ae39f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Added dark mode feature
+[33m987566e[m Added user session logout navbar
+[33md6ff9d4[m Improved login signup validation
+[33m41208b0[m Added working search bar
+[33m2224b95[m Initialize README with project details
+[33mf501c5c[m fixed port binding
+[33m74cbaeb[m added flask_sqlalchemy
+[33mac978de[m added requirements
+[33m1d6e64f[m First commit
+[33me5aefee[m Initial EduPath Finder MVP
