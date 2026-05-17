@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>EduPath Finder</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
 
 <body>
@@ -24,44 +30,73 @@
         <div class="nav-links">
 
             <a href="/">
-                <i class="fa-solid fa-house"></i> Home
+                <i class="fa-solid fa-house"></i>
+                Home
             </a>
 
             <a href="/courses">
-                <i class="fa-solid fa-book-open"></i> Courses
+                <i class="fa-solid fa-book-open"></i>
+                Courses
             </a>
 
             <a href="/books">
-                <i class="fa-solid fa-book"></i> Books
+                <i class="fa-solid fa-book"></i>
+                Books
             </a>
 
             <a href="/tools">
-                <i class="fa-solid fa-screwdriver-wrench"></i> Tools
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                Tools
             </a>
 
             <a href="/roadmap">
-                <i class="fa-solid fa-route"></i> AI Roadmap
+                <i class="fa-solid fa-route"></i>
+                AI Roadmap
             </a>
 
             <a href="/notes">
-                <i class="fa-solid fa-note-sticky"></i> Notes
+                <i class="fa-solid fa-note-sticky"></i>
+                Notes
             </a>
 
-            <a href="/signup">
-                <i class="fa-solid fa-user-plus"></i> Signup
-            </a>
+            {% if session.username %}
 
-            <a href="/login">
-                <i class="fa-solid fa-right-to-bracket"></i> Login
-            </a>
+                <span style="
+                    color:#2563eb;
+                    font-weight:700;
+                    padding:10px;
+                ">
+                    👋 Hi, {{ session.username }}
+                </span>
+
+                <a href="/logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+
+            {% else %}
+
+                <a href="/signup">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Signup
+                </a>
+
+                <a href="/login">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Login
+                </a>
+
+            {% endif %}
 
         </div>
 
     </nav>
 
     <main>
+
         {% block content %}
         {% endblock %}
+
     </main>
 
 </body>
