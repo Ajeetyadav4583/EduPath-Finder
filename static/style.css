@@ -1021,3 +1021,46 @@ footer{
     font-weight:500;
     margin-top:40px;
 }
+.focus-box{
+    max-width:600px;
+    margin:60px auto;
+    background:white;
+    padding:45px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(15,23,42,0.08);
+}
+
+.focus-box h1{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.focus-box p{
+    color:#64748b;
+    margin-bottom:30px;
+}
+
+#timer{
+    font-size:72px;
+    font-weight:800;
+    color:#2563eb;
+    margin-bottom:30px;
+}
+
+.focus-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.focus-buttons button{
+    border:none;
+    padding:14px 28px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}

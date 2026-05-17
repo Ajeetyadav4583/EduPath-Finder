@@ -67,6 +67,14 @@ def book_page():
 def tool_page():
     return render_template("tools.html", tools=tools)
 
+# ========================= FOCUS MODE =========================
+
+@app.route("/focus")
+def focus_page():
+    return render_template("focus.html")
+
+# ========================= ROADMAP =========================
+
 @app.route("/roadmap", methods=["GET", "POST"])
 def roadmap_page():
     roadmap = None
@@ -84,6 +92,7 @@ def roadmap_page():
                 "Step 4: GitHub par projects upload karo.",
                 "Step 5: Flask basics seekhkar web project banao."
             ],
+
             "Become AI Engineer": [
                 f"Goal: {goal} | Daily Time: {hours} hours",
                 "Step 1: Python, NumPy aur Pandas strong karo.",
@@ -92,6 +101,7 @@ def roadmap_page():
                 "Step 4: AI/ML mini projects banao.",
                 "Step 5: GitHub par AI portfolio create karo."
             ],
+
             "Crack JEE": [
                 f"Goal: {goal} | Daily Time: {hours} hours",
                 "Step 1: Physics, Chemistry, Math ka syllabus divide karo.",
@@ -100,6 +110,7 @@ def roadmap_page():
                 "Step 4: Weekly mock tests do.",
                 "Step 5: Weak topics par extra focus karo."
             ],
+
             "Prepare UPSC": [
                 f"Goal: {goal} | Daily Time: {hours} hours",
                 "Step 1: NCERT foundation complete karo.",
@@ -108,6 +119,7 @@ def roadmap_page():
                 "Step 4: Answer writing practice karo.",
                 "Step 5: Mock tests aur revision cycle follow karo."
             ],
+
             "Become Web Developer": [
                 f"Goal: {goal} | Daily Time: {hours} hours",
                 "Step 1: HTML aur CSS strong karo.",
@@ -124,12 +136,18 @@ def roadmap_page():
 
 @app.route("/notes", methods=["GET", "POST"])
 def notes_page():
+
     if request.method == "POST":
+
         title = request.form.get("title")
         content = request.form.get("content")
 
         if title and content:
-            notes.append({"title": title, "content": content})
+
+            notes.append({
+                "title": title,
+                "content": content
+            })
 
         return redirect(url_for("notes_page"))
 
@@ -137,21 +155,29 @@ def notes_page():
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact_page():
+
     success = False
 
     if request.method == "POST":
+
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
 
         print("Contact Message:", name, email, message)
+
         success = True
 
-    return render_template("contact.html", success=success)
+    return render_template(
+        "contact.html",
+        success=success
+    )
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
+
     if request.method == "POST":
+
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
@@ -159,9 +185,17 @@ def signup():
         existing = User.query.filter_by(email=email).first()
 
         if existing:
-            return render_template("signup.html", error="Email already registered.")
 
-        new_user = User(username=username, email=email, password=password)
+            return render_template(
+                "signup.html",
+                error="Email already registered."
+            )
+
+        new_user = User(
+            username=username,
+            email=email,
+            password=password
+        )
 
         db.session.add(new_user)
         db.session.commit()
@@ -172,17 +206,27 @@ def signup():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+
     if request.method == "POST":
+
         email = request.form.get("email")
         password = request.form.get("password")
 
         user = User.query.filter_by(email=email).first()
 
         if not user:
-            return render_template("login.html", error="Please signup first.")
+
+            return render_template(
+                "login.html",
+                error="Please signup first."
+            )
 
         if user.password != password:
-            return render_template("login.html", error="Invalid email or password.")
+
+            return render_template(
+                "login.html",
+                error="Invalid email or password."
+            )
 
         session["username"] = user.username
 
@@ -192,12 +236,19 @@ def login():
 
 @app.route("/logout")
 def logout():
+
     session.pop("username", None)
+
     return redirect(url_for("home"))
 
 with app.app_context():
     db.create_all()
 
 if __name__ == "__main__":
+
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+
+    app.run(
+        host="0.0.0.0",
+        port=port
+    )

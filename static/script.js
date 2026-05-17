@@ -67,3 +67,46 @@ forms.forEach(form => {
     });
 
 });
+let timeLeft = 25 * 60;
+let timerInterval = null;
+
+function updateTimerDisplay() {
+    const timer = document.getElementById("timer");
+
+    if (!timer) return;
+
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+
+    timer.textContent =
+        `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+
+function startTimer() {
+    if (timerInterval) return;
+
+    timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+            timeLeft--;
+            updateTimerDisplay();
+        } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            alert("Focus session completed!");
+        }
+    }, 1000);
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timeLeft = 25 * 60;
+    updateTimerDisplay();
+}
+
+updateTimerDisplay();
