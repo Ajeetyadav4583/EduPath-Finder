@@ -1,58 +1,31 @@
-<!-- templates/index.html -->
-
 {% extends "base.html" %}
-
 {% block content %}
 
-<!-- TOP SEARCH BAR -->
 <section class="top-search-section">
-
     <div class="top-search-container">
-
         <i class="fa-solid fa-magnifying-glass"></i>
-
-        <input
-            id="homeSearch"
-            type="text"
-            placeholder="Search courses, books, AI tools..."
-        >
-
+        <input id="homeSearch" type="text" placeholder="Search courses, books, AI tools...">
     </div>
-
 </section>
 
-
-<!-- CATEGORY TAGS -->
-<section class="categories-section">
-
-    <div class="categories">
-
-        <span>Python</span>
-        <span>AI/ML</span>
-        <span>Web Dev</span>
-        <span>UPSC</span>
-        <span>JEE</span>
-        <span>Data Science</span>
-        <span>DSA</span>
-
-    </div>
-
+<section class="categories">
+    <span>Python</span>
+    <span>AI/ML</span>
+    <span>Web Dev</span>
+    <span>UPSC</span>
+    <span>JEE</span>
+    <span>Data Science</span>
+    <span>DSA</span>
 </section>
 
-
-<!-- HERO -->
 <section class="hero">
-
     <div class="hero-content">
-
-        <span class="badge">
+        <div class="badge">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             AI Powered Learning Platform
-        </span>
+        </div>
 
-        <h1>
-            Build your learning path with the best learning resources.
-        </h1>
+        <h1>Build your learning path with the best learning resources.</h1>
 
         <p>
             Discover courses, books, tools, roadmaps and notes in one place.
@@ -60,7 +33,6 @@
         </p>
 
         <div class="hero-buttons">
-
             <a class="btn primary" href="/courses">
                 <i class="fa-solid fa-graduation-cap"></i>
                 Explore Courses
@@ -70,183 +42,97 @@
                 <i class="fa-solid fa-route"></i>
                 Generate Roadmap
             </a>
-
         </div>
-
     </div>
 
-    <div class="hero-panel">
-
+    <div class="dashboard-card">
         <h3>
             <i class="fa-solid fa-chart-line"></i>
             Learning Dashboard
         </h3>
 
-        <div class="stat-card">
-            <span>
-                <i class="fa-solid fa-star"></i>
-                Top Rated
-            </span>
-
-            <strong>4.8</strong>
+        <div class="dash-row">
+            <span><i class="fa-solid fa-star"></i> Top Rated</span>
+            <b>4.8</b>
         </div>
 
-        <div class="stat-card">
-            <span>
-                <i class="fa-solid fa-users"></i>
-                Completed
-            </span>
-
-            <strong>4,530+</strong>
+        <div class="dash-row">
+            <span><i class="fa-solid fa-users"></i> Completed</span>
+            <b>4,530+</b>
         </div>
 
-        <div class="stat-card">
-            <span>
-                <i class="fa-solid fa-road"></i>
-                AI Roadmaps
-            </span>
-
-            <strong>120+</strong>
+        <div class="dash-row">
+            <span><i class="fa-solid fa-road"></i> AI Roadmaps</span>
+            <b>120+</b>
         </div>
-
     </div>
-
 </section>
 
-
-<!-- STATS -->
-<section class="stats">
-
-    <div>
-        <i class="fa-solid fa-link"></i>
-        <h2>50+</h2>
-        <p>Trusted Resources</p>
+<section class="analysis-grid">
+    <div class="analysis-card">
+        <h4><i class="fa-solid fa-bolt"></i> Overall Progress</h4>
+        <h2>50%</h2>
+        <div class="line"><span style="width:50%"></span></div>
     </div>
 
-    <div>
-        <i class="fa-solid fa-briefcase"></i>
-        <h2>10+</h2>
-        <p>Career Paths</p>
+    <div class="analysis-card">
+        <h4><i class="fa-solid fa-face-smile"></i> Learning Mood</h4>
+        <h2>Positive</h2>
+        <div class="line"><span style="width:78%"></span></div>
     </div>
 
-    <div>
-        <i class="fa-solid fa-shield-halved"></i>
-        <h2>100%</h2>
-        <p>Verified Links</p>
+    <div class="analysis-card">
+        <h4><i class="fa-solid fa-key"></i> Key Resources</h4>
+        <h2>16</h2>
+        <div class="line"><span style="width:65%"></span></div>
     </div>
-
 </section>
 
-
-<!-- COURSES -->
 <h2 class="section-title">
-
     <i class="fa-solid fa-fire"></i>
-
     Trending Courses
-
 </h2>
 
 <div class="grid">
-
     {% for course in courses %}
-
-    <div
-        class="card course-card"
-        data-search="{{ course.title }} {{ course.category }} {{ course.provider }} {{ course.level }}"
-    >
-
+    <div class="card course-card" data-search="{{ course.title }} {{ course.category }} {{ course.provider }} {{ course.level }}">
         <div class="card-top">
-
-            <span class="tag">
-                {{ course.category }}
-            </span>
-
+            <span class="tag">{{ course.category }}</span>
             <i class="fa-regular fa-bookmark bookmark"></i>
-
         </div>
 
         <h3>{{ course.title }}</h3>
 
-        <p>
-            <i class="fa-solid fa-building-columns"></i>
-            {{ course.provider }}
-        </p>
-
-        <p>
-            <i class="fa-solid fa-layer-group"></i>
-            {{ course.level }}
-        </p>
-
-        <p>
-            <i class="fa-solid fa-star"></i>
-            {{ course.rating }}
-
-            |
-
-            <i class="fa-solid fa-user-check"></i>
-            {{ course.completed }} completed
-        </p>
+        <p><i class="fa-solid fa-building-columns"></i> {{ course.provider }}</p>
+        <p><i class="fa-solid fa-layer-group"></i> {{ course.level }}</p>
+        <p><i class="fa-solid fa-star"></i> {{ course.rating }} | {{ course.completed }} completed</p>
 
         <div class="progress">
-
             <div class="progress-bar"></div>
-
         </div>
 
         <div class="course-actions">
-
-            <button>
-                <i class="fa-solid fa-circle-check"></i>
-                Complete
-            </button>
-
+            <button><i class="fa-solid fa-circle-check"></i> Complete</button>
             <a href="{{ course.url }}" target="_blank">
-
-                Open
-
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
+                Open <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </a>
-
         </div>
-
     </div>
-
     {% endfor %}
-
 </div>
 
-
-<!-- SEARCH SCRIPT -->
 <script>
-
 const searchInput = document.getElementById("homeSearch");
-
 const courseCards = document.querySelectorAll(".course-card");
 
 searchInput.addEventListener("input", function () {
-
     const value = this.value.toLowerCase();
 
     courseCards.forEach(card => {
-
         const text = card.dataset.search.toLowerCase();
-
-        if (text.includes(value)) {
-
-            card.style.display = "block";
-
-        } else {
-
-            card.style.display = "none";
-
-        }
-
+        card.style.display = text.includes(value) ? "block" : "none";
     });
-
 });
-
 </script>
 
 {% endblock %}
