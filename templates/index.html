@@ -19,7 +19,7 @@
 </section>
 
 <section class="hero">
-    <div class="hero-content">
+    <div class="hero-content reveal">
         <div class="badge">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             AI Powered Learning Platform
@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <div class="dashboard-card">
+    <div class="dashboard-card reveal" data-delay="2">
         <h3>
             <i class="fa-solid fa-chart-line"></i>
             Learning Dashboard
@@ -53,49 +53,49 @@
 
         <div class="dash-row">
             <span><i class="fa-solid fa-star"></i> Top Rated</span>
-            <b>4.8</b>
+            <b data-count="4.8">0.0</b>
         </div>
 
         <div class="dash-row">
             <span><i class="fa-solid fa-users"></i> Completed</span>
-            <b>4,530+</b>
+            <b data-count="4,530+">0</b>
         </div>
 
         <div class="dash-row">
             <span><i class="fa-solid fa-road"></i> AI Roadmaps</span>
-            <b>120+</b>
+            <b data-count="120+">0</b>
         </div>
     </div>
 </section>
 
 <section class="analysis-grid">
-    <div class="analysis-card">
+    <div class="analysis-card reveal" data-delay="1">
         <h4><i class="fa-solid fa-bolt"></i> Overall Progress</h4>
-        <h2>50%</h2>
+        <h2 data-count="50%">0%</h2>
         <div class="line"><span style="width:50%"></span></div>
     </div>
 
-    <div class="analysis-card">
+    <div class="analysis-card reveal" data-delay="2">
         <h4><i class="fa-solid fa-face-smile"></i> Learning Mood</h4>
         <h2>Positive</h2>
         <div class="line"><span style="width:78%"></span></div>
     </div>
 
-    <div class="analysis-card">
+    <div class="analysis-card reveal" data-delay="3">
         <h4><i class="fa-solid fa-key"></i> Key Resources</h4>
-        <h2>16</h2>
+        <h2 data-count="16">0</h2>
         <div class="line"><span style="width:65%"></span></div>
     </div>
 </section>
 
-<h2 class="section-title">
+<h2 class="section-title reveal">
     <i class="fa-solid fa-fire"></i>
     Trending Courses
 </h2>
 
 <div class="grid">
     {% for course in courses %}
-    <div class="card course-card" data-search="{{ course.title }} {{ course.category }} {{ course.provider }} {{ course.level }}">
+    <div class="card course-card reveal" data-delay="{{ loop.index0 % 6 + 1 }}" data-search="{{ course.title }} {{ course.category }} {{ course.provider }} {{ course.level }}">
         <div class="card-top">
             <span class="tag">{{ course.category }}</span>
             <i class="fa-regular fa-bookmark bookmark"></i>
