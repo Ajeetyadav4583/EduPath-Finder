@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<section class="page-header">
+<section class="page-header reveal">
 
     <span class="badge">
         <i class="fa-solid fa-book-open"></i>
@@ -35,7 +35,7 @@
 
     {% for course in courses %}
 
-    <div class="card course-card">
+    <div class="card course-card reveal" data-delay="{{ loop.index0 % 6 + 1 }}">
 
         <div class="card-top">
 
