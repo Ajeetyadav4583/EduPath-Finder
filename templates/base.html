@@ -11,6 +11,8 @@
 
 <body>
 
+<div class="scroll-progress"><span id="scrollProgressBar"></span></div>
+
 <nav class="navbar">
     <a href="/" class="logo">
         <i class="fa-solid fa-graduation-cap"></i>
@@ -18,14 +20,14 @@
     </a>
 
     <div class="nav-links">
-        <a href="/"><i class="fa-solid fa-house"></i> Home</a>
-        <a href="/courses"><i class="fa-solid fa-book-open"></i> Courses</a>
-        <a href="/books"><i class="fa-solid fa-book"></i> Books</a>
-        <a href="/tools"><i class="fa-solid fa-screwdriver-wrench"></i> Tools</a>
-        <a href="/roadmap"><i class="fa-solid fa-route"></i> AI Roadmap</a>
-        <a href="/focus"><i class="fa-solid fa-clock"></i> Focus</a>
-        <a href="/notes"><i class="fa-solid fa-note-sticky"></i> Notes</a>
-        <a href="/contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+        <a href="/" class="{{ 'active' if request.path == '/' }}"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="/courses" class="{{ 'active' if request.path == '/courses' }}"><i class="fa-solid fa-book-open"></i> Courses</a>
+        <a href="/books" class="{{ 'active' if request.path == '/books' }}"><i class="fa-solid fa-book"></i> Books</a>
+        <a href="/tools" class="{{ 'active' if request.path == '/tools' }}"><i class="fa-solid fa-screwdriver-wrench"></i> Tools</a>
+        <a href="/roadmap" class="{{ 'active' if request.path == '/roadmap' }}"><i class="fa-solid fa-route"></i> AI Roadmap</a>
+        <a href="/focus" class="{{ 'active' if request.path == '/focus' }}"><i class="fa-solid fa-clock"></i> Focus</a>
+        <a href="/notes" class="{{ 'active' if request.path == '/notes' }}"><i class="fa-solid fa-note-sticky"></i> Notes</a>
+        <a href="/contact" class="{{ 'active' if request.path == '/contact' }}"><i class="fa-solid fa-envelope"></i> Contact</a>
 
         {% if session.username %}
             <span class="user-pill">👋 {{ session.username }}</span>
