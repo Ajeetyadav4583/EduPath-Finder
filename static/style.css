@@ -193,12 +193,10 @@ main{
 }
 
 .hero{
-    min-height:500px;
+    min-height:300px;
     border-radius:34px;
     padding:56px;
-    display:grid;
-    grid-template-columns:1.25fr .75fr;
-    gap:46px;
+    display:flex;
     align-items:center;
     background:
         radial-gradient(circle at top left,rgba(96,165,250,.28),transparent 32%),
@@ -284,75 +282,250 @@ main{
     transform:translateY(-5px);
 }
 
-.dashboard-card{
-    background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.16);
-    border-radius:30px;
-    padding:30px;
-    backdrop-filter:blur(20px);
-    position:relative;
-    z-index:2;
+/* ===== Three-panel dashboard row (Learning Dashboard / AI Roadmap / Community Hub) ===== */
+.panel-grid{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:1.15fr 1fr 1fr;
+    gap:22px;
+    align-items:start;
 }
 
-.dashboard-card h3{
-    font-size:25px;
-    margin-bottom:24px;
-    display:flex;
-    align-items:center;
-    gap:12px;
+.panel{
+    background:linear-gradient(160deg,rgba(15,23,42,.92),rgba(30,27,75,.78));
+    border:1px solid rgba(148,163,184,.2);
+    border-radius:26px;
+    padding:24px;
+    box-shadow:0 24px 70px rgba(0,0,0,.32);
 }
 
-.dash-row{
-    padding:20px 22px;
-    border-radius:20px;
-    background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.12);
+.panel-head{
     display:flex;
     align-items:center;
     justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.panel-head h3{
+    font-size:17px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#fff;
+}
+
+.rating-pill{
+    background:linear-gradient(135deg,#f59e0b,#fbbf24);
+    color:#1e1b06;
+    font-weight:800;
+    font-size:12px;
+    padding:6px 12px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.mini-chart{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;
+    padding:14px;
+    margin-bottom:18px;
+}
+
+.mini-chart svg{
+    width:100%;
+    height:60px;
+    display:block;
+}
+
+.chart-caption{
+    font-size:12px;
+    color:#94a3b8;
+    margin-top:8px;
+}
+
+.chart-caption b{ color:#93c5fd; }
+
+.panel-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.stat-box{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;
+    padding:14px;
+}
+
+.stat-box>span{
+    font-size:11px;
+    color:#94a3b8;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+}
+
+.stat-box>b{
+    display:block;
+    font-size:28px;
+    margin:6px 0 2px;
+}
+
+.stat-box>small{
+    color:#64748b;
+    font-size:11px;
+}
+
+.skill-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    margin:8px 0 4px;
+}
+
+.skill-row b{ color:#86efac; }
+
+/* AI Roadmap progress ring */
+.roadmap-progress{
+    position:relative;
+    width:120px;
+    height:120px;
+    margin:0 auto 20px;
+}
+
+.progress-ring{ width:100%; height:100%; transform:rotate(-90deg); }
+
+.ring-bg{
+    fill:none;
+    stroke:rgba(255,255,255,.1);
+    stroke-width:10;
+}
+
+.ring-fill{
+    fill:none;
+    stroke:url(#chartGrad);
+    stroke:#60a5fa;
+    stroke-width:10;
+    stroke-linecap:round;
+    stroke-dasharray:314;
+    stroke-dashoffset:calc(314 - (314 * var(--pct) / 100));
+    transition:stroke-dashoffset 1.2s cubic-bezier(.21,.8,.2,1);
+}
+
+.ring-label{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.ring-label b{ font-size:26px; }
+.ring-label small{ color:#94a3b8; font-size:11px; }
+
+.roadmap-steps{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.roadmap-steps li{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:13px;
+    color:#cbd5e1;
+    background:rgba(255,255,255,.05);
+    border-radius:12px;
+    padding:10px 12px;
+}
+
+.roadmap-steps li span{
+    margin-left:auto;
+    font-size:11px;
+    color:#94a3b8;
+}
+
+.roadmap-steps li.done i{ color:#22c55e; }
+.roadmap-steps li.active i{ color:#60a5fa; }
+.roadmap-steps li i{ color:#475569; }
+
+/* Community hub */
+.community-feed{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
     margin-bottom:16px;
 }
 
-.dash-row span{
+.feed-item{
+    display:flex;
+    gap:12px;
+    background:rgba(255,255,255,.05);
+    border-radius:14px;
+    padding:12px;
+}
+
+.avatar{
+    width:34px;
+    height:34px;
+    min-width:34px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
     display:flex;
     align-items:center;
-    gap:12px;
-    color:#e5e7eb;
-    font-weight:700;
+    justify-content:center;
+    font-size:11px;
+    font-weight:800;
 }
 
-.dash-row b{
-    font-size:22px;
+.avatar.mentor{ background:linear-gradient(135deg,#f59e0b,#ef4444); }
+
+.feed-item p{
+    font-size:12.5px;
+    color:#cbd5e1;
+    line-height:1.5;
 }
 
-.analysis-grid{
+.hashtag{ color:#93c5fd; }
+
+.feed-icons{
+    display:flex;
+    gap:16px;
+    font-size:18px;
+    color:#94a3b8;
+    justify-content:center;
+}
+
+/* Bottom stats bar */
+.stats-bar{
     margin-top:30px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
-}
-
-.analysis-card{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:14px;
     background:rgba(15,23,42,.86);
     border:1px solid rgba(148,163,184,.18);
-    border-radius:24px;
-    padding:24px;
-    box-shadow:0 20px 60px rgba(0,0,0,.28);
+    border-radius:18px;
+    padding:16px 28px;
 }
 
-.analysis-card h4{
+.stats-bar span{
+    font-size:13px;
+    font-weight:700;
     color:#cbd5e1;
-    font-size:14px;
-    margin-bottom:16px;
     display:flex;
-    gap:10px;
     align-items:center;
+    gap:8px;
 }
 
-.analysis-card h2{
-    font-size:34px;
-    margin-bottom:16px;
-}
+.stats-bar i{ color:#60a5fa; }
 
 .line{
     height:7px;
@@ -597,14 +770,14 @@ footer{
 
 @media(max-width:1100px){
     .hero{
-        grid-template-columns:1fr;
+        flex-direction:column;
     }
 
     .hero-content h1{
         font-size:52px;
     }
 
-    .analysis-grid{
+    .panel-grid{
         grid-template-columns:1fr;
     }
 }
@@ -835,5 +1008,15 @@ footer{
 
     #timer{
         font-size:54px;
+    }
+
+    .stats-bar{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:16px 20px;
+    }
+
+    .panel{
+        padding:18px;
     }
 }
