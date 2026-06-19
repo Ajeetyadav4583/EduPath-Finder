@@ -585,6 +585,160 @@ footer{
     }
 }
 
+/* ===================== ANIMATIONS ===================== */
+
+/* Scroll-reveal base state: hidden + shifted down */
+.reveal{
+    opacity:0;
+    transform:translateY(34px);
+    transition:opacity .7s cubic-bezier(.21,.65,.27,.99), transform .7s cubic-bezier(.21,.65,.27,.99);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Stagger helper delays for grids of cards */
+.reveal[data-delay="1"]{ transition-delay:.08s; }
+.reveal[data-delay="2"]{ transition-delay:.16s; }
+.reveal[data-delay="3"]{ transition-delay:.24s; }
+.reveal[data-delay="4"]{ transition-delay:.32s; }
+.reveal[data-delay="5"]{ transition-delay:.4s; }
+.reveal[data-delay="6"]{ transition-delay:.48s; }
+
+/* Navbar slide down on page load */
+@keyframes navDrop{
+    from{ opacity:0; transform:translateY(-22px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+.navbar{
+    animation:navDrop .6s cubic-bezier(.21,.65,.27,.99) both;
+}
+
+/* Hero badge gentle float */
+@keyframes floatBadge{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-6px); }
+}
+
+.badge{
+    animation:floatBadge 3.2s ease-in-out infinite;
+}
+
+/* Logo icon subtle wiggle on hover */
+.logo i{
+    transition:transform .4s ease;
+}
+
+.logo:hover i{
+    transform:rotate(-12deg) scale(1.1);
+}
+
+/* Buttons: smoother lift + shadow grow */
+.btn{
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
+}
+
+.btn.primary:hover{
+    box-shadow:0 24px 60px rgba(37,99,235,.5);
+}
+
+/* Category pills pop-in stagger on load */
+@keyframes pillIn{
+    from{ opacity:0; transform:translateY(14px) scale(.92); }
+    to{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+.categories span{
+    opacity:0;
+    animation:pillIn .5s cubic-bezier(.21,.65,.27,.99) forwards;
+}
+
+.categories span:nth-child(1){ animation-delay:.05s; }
+.categories span:nth-child(2){ animation-delay:.1s; }
+.categories span:nth-child(3){ animation-delay:.15s; }
+.categories span:nth-child(4){ animation-delay:.2s; }
+.categories span:nth-child(5){ animation-delay:.25s; }
+.categories span:nth-child(6){ animation-delay:.3s; }
+.categories span:nth-child(7){ animation-delay:.35s; }
+
+/* Dashboard card rows: subtle hover glow */
+.dash-row{
+    transition:background .3s ease, transform .3s ease;
+}
+
+.dash-row:hover{
+    background:rgba(255,255,255,.16);
+    transform:translateX(4px);
+}
+
+/* Progress / line bars animate their width in from 0 */
+.line span{
+    width:0 !important;
+    transition:width 1.4s cubic-bezier(.21,.8,.2,1);
+}
+
+.line.in-view span{
+    width:var(--target-width) !important;
+}
+
+.progress-bar{
+    width:0;
+    transition:width 1.4s cubic-bezier(.21,.8,.2,1);
+}
+
+.progress.in-view .progress-bar{
+    width:68%;
+}
+
+/* Card entrance + nicer hover (replaces flat hover) */
+.card{
+    transition:transform .4s cubic-bezier(.21,.65,.27,.99), border-color .4s ease, box-shadow .4s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.015);
+    box-shadow:0 28px 70px rgba(37,99,235,.25);
+}
+
+.bookmark{
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1), color .3s ease;
+}
+
+.bookmark:hover{
+    transform:scale(1.25) rotate(-8deg);
+}
+
+/* Section title icon pulse */
+.section-title i{
+    display:inline-block;
+    animation:flamePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes flamePulse{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.18); }
+}
+
+/* Respect users who prefer less motion */
+@media(prefers-reduced-motion:reduce){
+    .reveal,
+    .navbar,
+    .badge,
+    .categories span,
+    .section-title i,
+    .card,
+    .bookmark,
+    .btn{
+        animation:none !important;
+        transition:none !important;
+        opacity:1 !important;
+        transform:none !important;
+    }
+}
+
 @media(max-width:768px){
     .navbar{
         padding:18px 20px;
