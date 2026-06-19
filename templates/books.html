@@ -1,17 +1,63 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Book Directory</h1>
+
+<section class="page-header reveal">
+
+    <span class="badge">
+        <i class="fa-solid fa-book"></i>
+        Book Directory
+    </span>
+
+    <h1>Curated books to deepen your knowledge.</h1>
+
+    <p>
+        Hand-picked books across Python, AI/ML, Web Development and more — all from trusted, freely available sources.
+    </p>
+
+</section>
 
 <div class="grid">
+
     {% for book in books %}
-    <div class="card">
+
+    <div class="card reveal" data-delay="{{ loop.index0 % 6 + 1 }}">
+
+        <div class="card-top">
+
+            <span class="tag">
+                {{ book.category }}
+            </span>
+
+            <i class="fa-regular fa-bookmark bookmark"></i>
+
+        </div>
+
         <h3>{{ book.title }}</h3>
-        <p><b>Author:</b> {{ book.author }}</p>
-        <p><b>Category:</b> {{ book.category }}</p>
-        <p>⭐ {{ book.rating }}</p>
-        <a href="{{ book.url }}" target="_blank">Open Legal Link</a>
+
+        <p>
+            <i class="fa-solid fa-feather"></i>
+            {{ book.author }}
+        </p>
+
+        <p>
+            <i class="fa-solid fa-star"></i>
+            {{ book.rating }}
+        </p>
+
+        <div class="course-actions">
+
+            <a href="{{ book.url }}" target="_blank">
+                Open Book
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+        </div>
+
     </div>
+
     {% endfor %}
+
 </div>
+
 {% endblock %}
