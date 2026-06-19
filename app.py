@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
 app = Flask(__name__)
@@ -194,7 +195,7 @@ def signup():
         new_user = User(
             username=username,
             email=email,
-            password=password
+            password=generate_password_hash(password)
         )
 
         db.session.add(new_user)
@@ -221,7 +222,7 @@ def login():
                 error="Please signup first."
             )
 
-        if user.password != password:
+        if not check_password_hash(user.password, password):
 
             return render_template(
                 "login.html",
