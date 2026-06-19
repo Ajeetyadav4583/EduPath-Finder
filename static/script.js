@@ -208,4 +208,19 @@ document.addEventListener("DOMContentLoaded", () => {
         counters.forEach(el => counterObserver.observe(el));
     }
 
+    /* ===================== SCROLL PROGRESS BAR ===================== */
+    const progressBar = document.getElementById("scrollProgressBar");
+
+    if (progressBar) {
+        const updateProgress = () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = percent + "%";
+        };
+
+        window.addEventListener("scroll", updateProgress, { passive: true });
+        updateProgress();
+    }
+
 });
