@@ -45,47 +45,105 @@
         </div>
     </div>
 
-    <div class="dashboard-card reveal" data-delay="2">
-        <h3>
-            <i class="fa-solid fa-chart-line"></i>
-            Learning Dashboard
-        </h3>
-
-        <div class="dash-row">
-            <span><i class="fa-solid fa-star"></i> Top Rated</span>
-            <b data-count="4.8">0.0</b>
-        </div>
-
-        <div class="dash-row">
-            <span><i class="fa-solid fa-users"></i> Completed</span>
-            <b data-count="4,530+">0</b>
-        </div>
-
-        <div class="dash-row">
-            <span><i class="fa-solid fa-road"></i> AI Roadmaps</span>
-            <b data-count="120+">0</b>
-        </div>
-    </div>
 </section>
 
-<section class="analysis-grid">
-    <div class="analysis-card reveal" data-delay="1">
-        <h4><i class="fa-solid fa-bolt"></i> Overall Progress</h4>
-        <h2 data-count="50%">0%</h2>
-        <div class="line"><span style="width:50%"></span></div>
+<section class="panel-grid">
+
+    <div class="panel reveal" data-delay="1">
+        <div class="panel-head">
+            <h3><i class="fa-solid fa-chart-line"></i> Learning Dashboard</h3>
+            <span class="rating-pill"><i class="fa-solid fa-star"></i> 4.8</span>
+        </div>
+
+        <div class="mini-chart">
+            <svg viewBox="0 0 220 70" preserveAspectRatio="none">
+                <polyline points="0,55 25,40 50,48 75,25 100,32 125,15 150,22 175,8 200,18 220,5"
+                          fill="none" stroke="url(#chartGrad)" stroke-width="3" stroke-linecap="round"/>
+                <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#60a5fa"/>
+                        <stop offset="100%" stop-color="#a855f7"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <p class="chart-caption">Next suggested topic: <b>Advanced Data Visualization</b></p>
+        </div>
+
+        <div class="panel-stats">
+            <div class="stat-box">
+                <span>Courses Completed</span>
+                <b data-count="35">0</b>
+                <small>Active roadmaps</small>
+            </div>
+            <div class="stat-box">
+                <span>Skills Progress</span>
+                <div class="skill-row"><small>Python Skill</small><b>92%</b></div>
+                <div class="line"><span style="width:92%"></span></div>
+                <div class="skill-row"><small>AI Fundamentals</small><b>75%</b></div>
+                <div class="line"><span style="width:75%"></span></div>
+            </div>
+        </div>
     </div>
 
-    <div class="analysis-card reveal" data-delay="2">
-        <h4><i class="fa-solid fa-face-smile"></i> Learning Mood</h4>
-        <h2>Positive</h2>
-        <div class="line"><span style="width:78%"></span></div>
+    <div class="panel reveal" data-delay="2">
+        <div class="panel-head">
+            <h3><i class="fa-solid fa-route"></i> AI Roadmap Progress</h3>
+        </div>
+
+        <div class="roadmap-progress">
+            <svg viewBox="0 0 120 120" class="progress-ring">
+                <circle cx="60" cy="60" r="50" class="ring-bg"/>
+                <circle cx="60" cy="60" r="50" class="ring-fill" style="--pct:68"/>
+            </svg>
+            <div class="ring-label">
+                <b>68%</b>
+                <small>Roadmap</small>
+            </div>
+        </div>
+
+        <ul class="roadmap-steps">
+            <li class="done"><i class="fa-solid fa-circle-check"></i> AI Fundamentals <span>Complete</span></li>
+            <li class="active"><i class="fa-solid fa-spinner"></i> Machine Learning <span>75%</span></li>
+            <li><i class="fa-regular fa-circle"></i> Deep Learning <span>Next</span></li>
+            <li><i class="fa-regular fa-circle"></i> Specialization: NLP <span>Planned</span></li>
+        </ul>
     </div>
 
-    <div class="analysis-card reveal" data-delay="3">
-        <h4><i class="fa-solid fa-key"></i> Key Resources</h4>
-        <h2 data-count="16">0</h2>
-        <div class="line"><span style="width:65%"></span></div>
+    <div class="panel reveal" data-delay="3">
+        <div class="panel-head">
+            <h3><i class="fa-solid fa-comments"></i> Community Hub</h3>
+        </div>
+
+        <div class="community-feed">
+            <div class="feed-item">
+                <div class="avatar">JN</div>
+                <div>
+                    <p><b>User_Jane12</b> just finished the Neural Networks module! Highly recommend. <span class="hashtag">#DeepLearning</span></p>
+                </div>
+            </div>
+            <div class="feed-item">
+                <div class="avatar mentor">AL</div>
+                <div>
+                    <p><b>Mentor_Alex</b> · Live Q&amp;A session tomorrow on Advanced Data Visualization. Sign up!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="feed-icons">
+            <i class="fa-brands fa-discord"></i>
+            <i class="fa-brands fa-x-twitter"></i>
+            <i class="fa-regular fa-comment-dots"></i>
+        </div>
     </div>
+
+</section>
+
+<section class="stats-bar reveal">
+    <span><i class="fa-solid fa-chart-simple"></i> Live User Map</span>
+    <span><i class="fa-solid fa-graduation-cap"></i> 12,500+ Students</span>
+    <span><i class="fa-solid fa-chalkboard-user"></i> 350+ Accredited Instructors</span>
+    <span><i class="fa-solid fa-robot"></i> 700+ AI Tools</span>
+    <span><i class="fa-solid fa-heart"></i> 98% Student Satisfaction</span>
 </section>
 
 <h2 class="section-title reveal">
